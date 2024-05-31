@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Films</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script> async function showData(){
+            const response=await fetch("https://swapi.dev/api/planets/1/");    
+            const data=await response.json()
+
+            for (film of data.films){
+            const response=await fetch(film);
+            const filmsDiv=document.getElementById('filmsData');
+            const data0=await response.json();
+       
+            filmsDiv.innerHTML+=`
+                                    <h2>${data0.title}</h2>
+                                    <p><strong>Episode ID:</strong> ${data0.episode_id}</p>
+                                    <p><strong>Opening Crawl:</strong></p>
+                                    <p>${data0.opening_crawl}</p>
+                                    <p><strong>Director:</strong> ${data0.director}</p>
+                                    <p><strong>Producer:</strong> ${data0.producer}</p>
+                                    <p><strong>Release Date:</strong> ${data0.release_date}</p>
+
+                                    <h3>Characters:</h3>
+                                    <ul>
+                                    ${data0.characters.map(character => `<li>${character}</li>`).join('')}
+                                    </ul>
+
+                                    <h3>Planets:</h3>
+                                    <ul>
+                                    ${data0.characters.map(character => `<li>${character}</li>`).join('')}
+                                    </ul>
+
+                                    <h3>Starships:</h3>
+                                    <ul>
+                                    ${data0.starships.map(starship => `<li>${starship}</li>`).join('')}
+                                    </ul>
+
+                                    <h3>Vehicles:</h3>
+                                    <ul>
+                                    ${data0.vehicles.map(vehicle => `<li>${vehicle}</li>`).join('')}
+                                    </ul>
+
+                                    <h3>Species:</h3>
+                                    <ul>
+                                    ${data0.species.map(species => `<li>${species}</li>`).join('')}
+                                    </ul>
+
+                                    <p><strong>Created:</strong> ${(data0.created)}</p>
+                                    <p><strong>Edited:</strong> ${(data0.edited)}</p>
+                                    <p><strong>URL:</strong> <a href="${data0.url}">${data0.url}</a></p>
+                                    <hr>
+            `;
+            }
+        }
+        document.addEventListener('DOMContentLoaded',showData)
+    </script>
+</head>
+<body>
+    <div id="filmsData"></div>
+    
+</body>
+</html>

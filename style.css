@@ -1,0 +1,46 @@
+body{
+    background-color: aliceblue;
+}
+
+.main{
+  display: flex;
+  flex-direction:column ;
+  justify-content: center;
+  align-items: center;
+}
+
+button{
+    color: chocolate;
+    background-color: blanchedalmond;
+    height: 40px;
+    width: 100px;
+    border: 1px solid black;
+    border-radius: 7px;
+}
+
+h2{
+    color: chocolate;
+}
+
+h1{
+    color:crimson;
+}
+
+p{
+    color: darkgoldenrod;
+}
+strong{
+    color: brown;
+}
+
+ul{
+    color:coral;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    color:red;
+}
